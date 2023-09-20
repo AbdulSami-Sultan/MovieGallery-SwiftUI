@@ -6,8 +6,7 @@
 //
 
 import SwiftUI
-
-struct MovieDetail: View {
+struct MovieDetail : View {
     var movie: Movie
     
     var body: some View {
@@ -38,7 +37,7 @@ struct MovieDetail: View {
                     .font(.body)
                     .lineSpacing(14)
                 
-//                WatchButton(movie: movie)
+                WatchButton(movie: movie)
                     .padding()
             }.padding(.all)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,maxHeight: .infinity, alignment: .topLeading)
@@ -48,8 +47,28 @@ struct MovieDetail: View {
     }
 }
 
-struct MovieDetail_Previews: PreviewProvider {
+struct MovieDetail_Preview: PreviewProvider {
     static var previews: some View {
         MovieDetail(movie: moviesData.first!)
+    }
+}
+
+struct WatchButton: View {
+    let movie: Movie
+    @State var showingDetail = false
+    
+    var body: some View {
+        Button(action: {
+            self.showingDetail.toggle()
+        }) {
+            Text("Watch Trailer")
+                .frame(width: 200, height: 50,alignment: .center)
+                .foregroundColor(.white)
+                .font(.headline)
+                .background(Color.blue)
+                .cornerRadius(10)
+        } .sheet(isPresented: $showingDetail){
+            TrailerView(movie: self.movie)
+        }
     }
 }

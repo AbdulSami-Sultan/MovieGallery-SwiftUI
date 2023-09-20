@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+
 struct HomeView : View {
     var catagories: [String: [Movie]] {
         .init(grouping: moviesData,
@@ -43,6 +44,7 @@ struct HomeView_Preview: PreviewProvider {
         HomeView()
     }
 }
+
 struct FeaturedMovieView: View {
     var movie: Movie
     var body: some View {

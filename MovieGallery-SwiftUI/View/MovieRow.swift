@@ -18,21 +18,21 @@ struct MovieRow : View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
                     ForEach(self.movies,id: \.title) { movie in
-//                        NavigationLink(destination: MovieDetail(movie: movie)) {
+                        NavigationLink(destination: MovieDetail(movie: movie)) {
                             MovieItem(movie: movie)
                                 .frame(width: 300)
                                 .padding(.trailing, 30)
                                 .cornerRadius(10)
                                 .clipped()
                         }
-//                    }
+                    }
                 }
             }
         }
     }
 }
 
-struct MovieRow_Previews: PreviewProvider {
+struct MovieRow_Preview: PreviewProvider {
     static var previews: some View {
         MovieRow(catagoryName: "Marvel", movies: load("movies.json"))
     }
